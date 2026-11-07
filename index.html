@@ -36,7 +36,15 @@
     .auth-links{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
     .auth-links button{width:auto;background:none;color:#6255e8;padding:5px}
     #authMessage{margin-top:14px;font-size:14px;line-height:1.5}
-    #accountBar{display:none;align-items:center;gap:10px}
+    #accountBar{display:none;align-items:center;gap:8px}
+    .account-status{display:flex;align-items:center;gap:7px;background:#eefbf3;color:#187744;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:bold}
+    .status-dot{width:8px;height:8px;border-radius:50%;background:#20b66a}
+    .avatar{width:30px;height:30px;border-radius:50%;background:#6255e8;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:bold}
+    #profileSection{display:none;max-width:700px;margin:35px auto;padding:25px;background:#fff;border-radius:18px;box-shadow:0 5px 22px #24244012}
+    .profile-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .profile-avatar{width:58px;height:58px;border-radius:50%;background:#6255e8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold}
+    .profile-row{padding:13px 0;border-top:1px solid #eee;font-size:14px;overflow-wrap:anywhere}
+    .profile-row strong{display:block;margin-bottom:5px}
     @media(max-width:650px){nav{gap:10px}nav a{font-size:12px}.hero h1{font-size:29px}.hero{padding:60px 6%}section{padding:45px 7%}}
   </style>
 </head>
@@ -49,7 +57,8 @@
     <a href="#tentang">Tentang</a>
     <button class="secondary" id="openAuthBtn" onclick="showAuth('login')">Login / Daftar</button>
     <div id="accountBar">
-      <span id="userEmail" style="font-size:12px"></span>
+      <span class="account-status"><span class="status-dot"></span>Sudah masuk</span>
+      <button class="secondary" id="profileNavBtn" onclick="openProfile()"><span class="avatar" id="navAvatar">N</span> Profil Saya</button>
       <button onclick="logout()">Keluar</button>
     </div>
   </nav>
@@ -70,6 +79,17 @@
   </div>
   <div id="authMessage" role="status"></div>
 </div>
+
+<section id="profileSection">
+  <div class="profile-head">
+    <div class="profile-avatar" id="profileAvatar">N</div>
+    <div><h2>Profil Saya</h2><p style="color:#20a05a;font-size:13px;margin-top:5px">● Akun NEXORA aktif</p></div>
+  </div>
+  <div class="profile-row"><strong>Email akun</strong><span id="profileEmail">-</span></div>
+  <div class="profile-row"><strong>Username</strong><span>Belum diatur</span></div>
+  <div class="profile-row"><strong>Bio</strong><span>Tambahkan bio kreatormu pada tahap pengembangan profil berikutnya.</span></div>
+  <button class="secondary" onclick="closeProfile()" style="margin-top:18px">Kembali ke Beranda</button>
+</section>
 
 <main>
   <div class="hero" id="home">
@@ -109,7 +129,7 @@
 <script>
   // Ganti nilai di bawah dengan Supabase Project URL dan Publishable key milikmu.
   const SUPABASE_URL = "https://axntmlddnwueckkjtjue.supabase.co";
-  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_hjCiQAi7urDQbVzWUIs78g_vRGBNCUN";
+  const SUPABASE_PUBLISHABLE_KEY = "TEMPEL_PUBLISHABLE_KEY_DI_SINI";
 
   const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
@@ -148,7 +168,7 @@
     const message = document.getElementById("authMessage");
     const submit = document.getElementById("authSubmit");
 
-    if (SUPABASE_PUBLISHABLE_KEY === "TEMPEL_PUBLISHABLE_KEY_DI_SINI") {
+    if (SUPABASE_PUBLISHABLE_KEY === "sb_publishable_hjCiQAi7urDQbVzWUIs78g_vRGBNCUN") {
       message.textContent = "Pengaturan belum selesai: tempel Publishable key Supabase ke dalam kode terlebih dahulu.";
       return;
     }
@@ -190,7 +210,23 @@
     const loggedIn = !!user;
     document.getElementById("openAuthBtn").style.display = loggedIn ? "none" : "inline-block";
     document.getElementById("accountBar").style.display = loggedIn ? "flex" : "none";
-    document.getElementById("userEmail").textContent = loggedIn ? user.email : "";
+    if (loggedIn) {
+      const initial = (user.email || "N").trim().charAt(0).toUpperCase();
+      document.getElementById("navAvatar").textContent = initial;
+      document.getElementById("profileAvatar").textContent = initial;
+      document.getElementById("profileEmail").textContent = user.email || "Email tidak tersedia";
+    } else {
+      closeProfile();
+    }
+  }
+
+  function openProfile() {
+    document.getElementById("profileSection").style.display = "block";
+    document.getElementById("profileSection").scrollIntoView({behavior:"smooth"});
+  }
+
+  function closeProfile() {
+    document.getElementById("profileSection").style.display = "none";
   }
 
   async function logout() {
