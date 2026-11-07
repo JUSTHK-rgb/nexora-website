@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXORA — Create Your Future</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f7f8fc;color:#20243a}
+header{background:white;padding:17px 6%;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px #0000000b;position:sticky;top:0;z-index:5}
+.logo{font-size:25px;font-weight:900;color:#6255df;letter-spacing:1px}
+nav a{text-decoration:none;color:#45465a;margin-left:17px;font-size:13px}
+.hero{padding:85px 7%;background:linear-gradient(130deg,#6558e8,#9274f5);color:white;text-align:center}
+.hero h1{font-size:43px;margin-bottom:17px}
+.hero p{font-size:16px;line-height:1.7;max-width:600px;margin:auto}
+.btn{display:inline-block;background:white;color:#6558e8;padding:14px 25px;border-radius:12px;text-decoration:none;font-weight:bold;margin-top:25px;border:0;cursor:pointer}
+section{padding:55px 7%}
+.heading{text-align:center;margin-bottom:32px}
+.heading h2{font-size:27px;margin-bottom:10px}
+.heading p{color:#777}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:white;padding:25px;border-radius:17px;box-shadow:0 5px 22px #24244b0b}
+.card .emoji{font-size:32px;margin-bottom:15px}
+.card h3{margin-bottom:10px}
+.card p{color:#777;font-size:14px;line-height:1.6}
+.free{background:#eeecff;text-align:center;border-radius:20px;padding:35px}
+.free h2{color:#6558e8;margin-bottom:12px}
+footer{background:#20213a;color:white;padding:30px;text-align:center;font-size:13px}
+.menu{display:none}
+@media(max-width:650px){
+nav{display:none}
+.hero h1{font-size:34px}
+.menu{display:block;border:0;background:none;font-size:25px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">NEXORA.</div>
+<nav>
+<a href="#home">Beranda</a>
+<a href="#fitur">Fitur</a>
+<a href="#komunitas">Komunitas</a>
+<a href="#tentang">Tentang</a>
+</nav>
+<button class="menu" onclick="alert('Menu NEXORA')">☰</button>
+</header>
+
+<div class="hero" id="home">
+<h1>Create Your Future.</h1>
+<p>Tempat generasi kreatif berkembang, berkarya, membangun komunitas, dan menciptakan masa depan bersama.</p>
+<a href="#fitur" class="btn">Jelajahi NEXORA →</a>
+</div>
+
+<section id="fitur">
+<div class="heading">
+<h2>Temukan Potensimu</h2>
+<p>Semua yang kamu butuhkan untuk berkembang dalam satu platform.</p>
+</div>
+<div class="grid">
+<div class="card">
+<div class="emoji">👤</div>
+<h3>Creator Profile</h3>
+<p>Buat profil kreator, tampilkan bio, minat, karya, dan portofoliomu.</p>
+</div>
+<div class="card" id="komunitas">
+<div class="emoji">🌐</div>
+<h3>Community</h3>
+<p>Bergabung dengan komunitas, bertukar ide, dan berkolaborasi.</p>
+</div>
+<div class="card">
+<div class="emoji">🎨</div>
+<h3>Creator Studio</h3>
+<p>Tempat membuat, mengelola, dan mempublikasikan karya kreatif.</p>
+</div>
+<div class="card">
+<div class="emoji">🤖</div>
+<h3>NEXORA AI</h3>
+<p>Asisten AI untuk membantu kreativitas dan produktivitasmu.</p>
+</div>
+<div class="card">
+<div class="emoji">🏆</div>
+<h3>Achievements</h3>
+<p>Kumpulkan XP, naik level, dan dapatkan badge dari aktivitas positif.</p>
+</div>
+<div class="card">
+<div class="emoji">🚀</div>
+<h3>Creative Challenge</h3>
+<p>Ikuti tantangan kreatif dan tunjukkan kemampuan terbaikmu.</p>
+</div>
+</div>
+</section>
+
+<section id="tentang">
+<div class="free">
+<h2>🎉 NEXORA Gratis 3 Tahun Pertama!</h2>
+<p>Semua fitur dasar NEXORA gratis untuk semua pengguna selama 3 tahun pertama.</p>
+<a href="#home" class="btn">Mulai Jelajahi</a>
+</div>
+</section>
+
+<footer>
+<div class="logo" style="color:white">NEXORA.</div>
+<p style="margin-top:12px">Create • Connect • Inspire</p>
+<p style="margin-top:12px">© 2026 NEXORA. All rights reserved.</p>
+</footer>
+
+<script>
+console.log("NEXORA website initialized");
+</script>
+</body>
+</html>
